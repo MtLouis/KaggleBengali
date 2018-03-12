@@ -1,0 +1,31 @@
+Forecasting pour les 314 restaurants de air (semaine avril + semaine mai)
+
+En plus, plus de données avec seulement infos resas (mais pas visites) sur hdg
+Attention: air_visit -> compte les resas de air_resas? Ils peuvent venir sans réserver mais aussi reserver sans venir
+	ET compte celui de hdg_reserve?
+Attention: Golden week dans la base d'entrainement!
+Attention: Time-series, l'autocorrélation joue un rôle. Modèles linéaires
+
+Types: temps, heures, seul quantitatif pure = nombre de visiteurs, qualitatif: vacances, zone, genre du resto
+
+1 gros data frame pour hdg et air séparément:
+- Merge des air_reserve en séparant jour et heure
+- Pareil pour hdg reserve
+- quid des visites? -< visualiser air_reserve et air_visitt
+
+A faire:
+1. Quelle relation entre air_reserve, air_visit, hpg_reserve (s'assurer qu'il y ait le compte)
+2. Analyse 1D sur quartiers, nb de visiteurs, types de restaurants
+2. 2 ou 3 matrices de corrélation (commencer sut tout air, hdg peut servir à confirmer les hypothèses sur l'intersection, voir les autres échantillons)
+	- reservations seules avec hdg et air
+	- visites effectives sur air
+3. Commencer à faire du feature engineering à partir des tutos (et outils Dejean?)
+Tuto time series: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
+ET
+Bike sharing Picot: https://www.analyticsvidhya.com/blog/2015/06/solution-kaggle-competition-bike-sharing-demand/
+4. Modèle linéaire
+
+DIVISION DU BOULOT sur R pour l'instant
+Louis: quartiers x type de restau
+Miguel: regarder le lien entre reserve et visit, Lire tutos -> méthodes qui donnent feature engineering
+Picot: correlations et boxplot entre périodes de temps + nb visiteurs

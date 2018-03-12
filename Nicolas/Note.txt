@@ -1,0 +1,28 @@
+AIR VISIT ET AIR RESERVE
+
+Observations:
+1 Il y a des restaurants qui sont dans air_visit et pas dans air_reserve
+2 air_reserve: 92 378 lignes et 314 restos pour 252 108 et 829 restos dans air_visit.
+	->  si on merge (avec air_reserve à gauche) selon les stores et les dates de visite 398 matchs.. c'est peu, ils correspondent à seulement 84 restos differents
+	-> sur ce merge on voit que air_visit$visitors pas toujours plus grand que air_reserve$reserve_visitors 
+3 enorme trou de données (seulement quelques unes renseignées) entre août et novembre 2016 environ
+4 Il y a la colonne air_reserve$visit_datetime: ils sont bel et bien venus (ne compte pas les resas sans personne qui vient)
+
+CONCLUSION (je pense)
+air_reserve = resas et visites correspondantes (pas de zéro: que les résas qui ont abouti)
+air_visit = visites sans resas uniquement
+resas renseignées aux heures piles
+visites renseignées par jour
+
+NOUVEAU DATASET POUR PARTIR: avec air_visit à gauche du merge, on perd bcp moins d'info (cf code)
+Et tu obtiens 87181 lignes avec 
+- les jours de visites sur reservations, sans reservations
+- les heures de resas correspondantes
+- j'y ai aussi ajouté les données de air_store_info
+
+A FAIRE:
+- Séparer date et heure des resas dans 2 colonnes (idée Picot)
+- Faire les corrélations et tout ce qu'on a marqué dans ma note la dernière fois
+- Feature engineering on time series (je commence à lire)
+
+PUIS il faudra penser à analyser et inclure hpg
